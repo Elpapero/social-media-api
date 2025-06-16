@@ -1,0 +1,28 @@
+services:
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: socialdb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"  # Porta host 5433 mapeada para 5432 do container
+
+  app:
+    build: .
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/socialdb?schema=public
+      - PORT=8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./:/app   # Para live reload do código, se quiser
+    command: ["npx", "tsx", "src/server.ts"]
+
+volumes:
+  postgres_data:
