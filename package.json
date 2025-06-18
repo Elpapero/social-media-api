@@ -1,12 +1,11 @@
 {
-  "name": "weather-api",
+  "name": "social-media-api",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start:dev": "tsx src/server.ts",
+    "start:dev": "npx prisma generate && tsx src/server.ts",
     "start:watch": "tsx watch src/server.ts",
     "start:build": "npm run dist && node/dist/server.js",
-    "build": "tsup src",
     "prisma:generate": "npx prisma generate",
     "prisma:migrate": "npx prisma migrate dev"
   },

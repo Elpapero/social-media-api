@@ -2,14 +2,16 @@ FROM node:18
 
 WORKDIR /app
 
-COPY package*.json ./
+# Copiar arquivos necessários para instalação
+COPY package.json ./
+COPY prisma ./prisma/
 
+# Instalar dependências
 RUN npm install
+
+# Gerar Prisma Client
+RUN npx prisma generate
 
 COPY . .
 
-RUN npx prisma generate
-
-EXPOSE 8000
-
-CMD ["tsx", "--env-file=.env", "src/server.ts"]
+CMD ["sh", "-c", "npx prisma generate && npm run start:dev"]

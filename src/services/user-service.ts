@@ -1,7 +1,6 @@
 import * as HttpStatusCode from "../utils/http-status-code";
 import * as UserRepository from "../repositories/user-repository";
 import { UserModel } from "../models/user.model";
-import { User } from "../generated/prisma";
 
 export const getUserService = async () => {
   const data = await UserRepository.findAllUsers();
