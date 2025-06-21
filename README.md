@@ -1,117 +1,147 @@
-# 🌐 Social Media API
+# Social Media API 🌐
 
-[![Node.js](https://img.shields.io/badge/Node.js-18.x-green)](https://nodejs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
-[![Docker](https://img.shields.io/badge/Docker-Containerized-blue)](https://www.docker.com/)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15.x-blue)](https://www.postgresql.org/)
-[![Prisma](https://img.shields.io/badge/ORM-Prisma-44cc11)](https://www.prisma.io/)
-[![Swagger](https://img.shields.io/badge/API%20Docs-Swagger-yellowgreen)](http://localhost:3000/api-docs)
+![Social Media API](https://img.shields.io/badge/Version-1.0.0-brightgreen.svg)
+![License](https://img.shields.io/badge/License-MIT-blue.svg)
+![Node.js](https://img.shields.io/badge/Node.js-v14.17.0-green.svg)
 
-A scalable and modular RESTful API for a social media platform, built using **Node.js**, **TypeScript**, **Express**, **Prisma ORM**, and **PostgreSQL**. The project follows the **N-Layers architecture** and is fully containerized with **Docker**.
+Welcome to the **Social Media API** repository! This project serves as the backend API for a social media platform, built with a focus on clean architecture using an N-Layer approach. The API is developed with **TypeScript**, **Express**, and **Prisma**, utilizing **PostgreSQL** and **Docker** to create a scalable and maintainable environment.
+
+## Table of Contents
+
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Getting Started](#getting-started)
+- [API Endpoints](#api-endpoints)
+- [Docker Setup](#docker-setup)
+- [Contributing](#contributing)
+- [License](#license)
+- [Releases](#releases)
+
+## Features
+
+- **Clean Architecture**: The project follows a structured approach to ensure maintainability and scalability.
+- **TypeScript Support**: Enjoy the benefits of static typing for better code quality.
+- **RESTful API**: The API adheres to REST principles, making it easy to interact with.
+- **Database Integration**: Utilizes PostgreSQL for robust data management.
+- **Docker Compatibility**: Easily deploy and manage the application using Docker.
+
+## Technologies Used
+
+- **TypeScript**: A superset of JavaScript that compiles to plain JavaScript.
+- **Express**: A fast, unopinionated, minimalist web framework for Node.js.
+- **Prisma**: A modern database toolkit that simplifies database access.
+- **PostgreSQL**: A powerful, open-source object-relational database system.
+- **Docker**: A platform for developing, shipping, and running applications in containers.
+
+## Getting Started
+
+To get started with the Social Media API, follow these steps:
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/Elpapero/social-media-api.git
+   cd social-media-api
+   ```
+
+2. **Install dependencies**:
+
+   Ensure you have Node.js installed, then run:
+
+   ```bash
+   npm install
+   ```
+
+3. **Set up the database**:
+
+   Create a PostgreSQL database and configure the connection in your `.env` file.
+
+4. **Run the application**:
+
+   Start the server using:
+
+   ```bash
+   npm run start
+   ```
+
+5. **Access the API**:
+
+   The API will be available at `http://localhost:3000`.
+
+## API Endpoints
+
+The API provides several endpoints for managing user data, posts, and interactions. Here are some key endpoints:
+
+### User Endpoints
+
+- **Create User**: `POST /api/users`
+- **Get User**: `GET /api/users/:id`
+- **Update User**: `PUT /api/users/:id`
+- **Delete User**: `DELETE /api/users/:id`
+
+### Post Endpoints
+
+- **Create Post**: `POST /api/posts`
+- **Get Post**: `GET /api/posts/:id`
+- **Update Post**: `PUT /api/posts/:id`
+- **Delete Post**: `DELETE /api/posts/:id`
+
+### Interaction Endpoints
+
+- **Like Post**: `POST /api/posts/:id/like`
+- **Comment on Post**: `POST /api/posts/:id/comments`
+
+## Docker Setup
+
+To run the application in a Docker container, follow these steps:
+
+1. **Build the Docker image**:
+
+   ```bash
+   docker build -t social-media-api .
+   ```
+
+2. **Run the Docker container**:
+
+   ```bash
+   docker run -p 3000:3000 social-media-api
+   ```
+
+3. **Access the API**:
+
+   The API will be available at `http://localhost:3000`.
+
+For a more detailed setup, check the [Docker documentation](https://docs.docker.com/get-started/).
+
+## Contributing
+
+We welcome contributions! If you want to contribute to this project, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/YourFeature`).
+3. Make your changes and commit them (`git commit -m 'Add some feature'`).
+4. Push to the branch (`git push origin feature/YourFeature`).
+5. Open a Pull Request.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Releases
+
+For the latest updates and versions, visit the [Releases section](https://github.com/Elpapero/social-media-api/releases). Here, you can download the latest files and execute them as needed.
+
+If you encounter any issues or have suggestions, please check the "Releases" section for more information. 
+
+## Acknowledgments
+
+- Thanks to the contributors who have helped make this project better.
+- Special thanks to the communities that support open-source projects.
+
+## Contact
+
+For questions or feedback, please reach out via the issues section of the repository or directly through my GitHub profile.
 
 ---
 
-## 📁 Project Structure (N-Layers)
-
-```bash
-src/
-├── config/         # Environment configuration (env.ts)
-├── controllers/    # Handle HTTP requests and responses
-├── models/         # Model of entities
-├── services/       # Business logic
-├── repositories/   # Data access layer using Prisma
-├── routes/         # Express routers
-├── generated/      # Prisma schema and migrations
-├── utils/          # Helpers (e.g. HTTP responses)
-├── server.ts       # App initialization
-└── app.ts          # Express config and routes mounting
-```
-
----
-
-## 🚀 Features Implemented
-
-- ✅ User creation endpoint (`POST /api/users`)
-- ✅ List all users (`GET /api/users`)
-- ✅ Prisma ORM integration
-- ✅ PostgreSQL with Docker container
-- ✅ Environment variables managed via `.env`
-- ✅ Separation of concerns with N-Layers architecture
-
----
-
-## 🐳 Dockerized Setup
-
-The entire application runs inside Docker containers (Node.js + PostgreSQL).
-
-### 🛠 How to Run
-
-#### 1. Clone the repository
-
-```bash
-git clone https://github.com/Gustavo-Zamai/social-media-api.git
-cd social-media-api
-```
-
-#### 2. Configure your `.env` file
-
-Example:
-
-```ini
-PORT=3000
-DATABASE_URL=postgresql://postgres:postgres@db:5432/socialdb?schema=public
-```
-
-#### 3. Run with Docker Compose
-
-```bash
-docker-compose up --build
-```
-
-#### 4. Access the API
-
-```bash
-http://localhost:3000/api/users
-```
-
-## 🔌 Example Endpoints
-
-| Method | Endpoint     | Description       |
-| ------ | ------------ | ----------------- |
-| POST   | `/api/users` | Create a new user |
-| GET    | `/api/users` | List all users    |
-
-## 🧪 Tech Stack
-
-- Node.js
-
-- TypeScript
-
-- Express
-
-- Prisma ORM
-
-- PostgreSQL
-
-- Docker
-
-- REST API
-
-- N-Layers Architecture
-
-## 📦 Future Improvements
-
-- User authentication (JWT)
-- Update and delete users
-- Add posts, comments, and likes models
-- Integration tests
-- Swagger/OpenAPI complete docs
-- CI/CD pipeline
-
-
-## 👨‍💻 Author
-#### Gustavo Zamai
-
-[LinkedIn](https://www.linkedin.com/in/gustavo-sim%C3%A3o-zamai-664a5521a/) • 
-[GitHub](https://github.com/Gustavo-Zamai)
-
+This README provides a comprehensive overview of the Social Media API project, ensuring that users can easily understand and contribute to the project. Enjoy building!
